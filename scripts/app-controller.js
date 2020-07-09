@@ -78,7 +78,7 @@ var AppController = function () {
       sendPushViaXHRButton.addEventListener('click', function () {
         if (_this2._currentSubscription) {
           for (var i=0; i<10; i++) {            
-          _this2.sendPushMessage(_this2._currentSubscription, _this2._payloadTextField.value);
+                _this2.sendPushMessage(_this2._currentSubscription, _this2._payloadTextField.value);
           }
         }
       });
