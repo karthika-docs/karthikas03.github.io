@@ -25,8 +25,8 @@ self.addEventListener('push', function (event) {
     notificationTitle = 'Received Payload';
     notificationOptions.body = 'Push data: \'' + dataText + '\'';
   }
-
-  event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions), self.analytics.trackEvent('push-received')]));
+ for (var i;i<100;i++){
+  event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions), self.analytics.trackEvent('push-received')]));}
 });
 
 self.addEventListener('notificationclick', function (event) {
