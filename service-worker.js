@@ -17,6 +17,10 @@ async function listNotifications(){
     console.log(i)
     console.log(currentNotification)    
   }
+  
+  // Remember to close the old notification.
+  currentNotification.close();
+  
   return Promise.resolve()
 }
 
