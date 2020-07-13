@@ -7,7 +7,7 @@ importScripts('./scripts/analytics-sw.js');
 
 self.analytics.trackingId = 'UA-77119321-2';
 
-function listNotifications(){
+async function listNotifications(){
   
   const notifications = await self.registration.getNotifications();
   let currentNotification;
