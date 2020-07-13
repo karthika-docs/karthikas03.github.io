@@ -15,11 +15,10 @@ async function listNotifications(){
   for(let i = 0; i < notifications.length; i++) {
     currentNotification = notifications[i];
     console.log(i)
-    console.log(currentNotification)    
+    console.log(currentNotification) 
+    // Remember to close the old notification.
+    currentNotification.close();
   }
-  
-  // Remember to close the old notification.
-  currentNotification.close();
   
   return Promise.resolve()
 }
