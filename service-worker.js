@@ -7,6 +7,20 @@ importScripts('./scripts/analytics-sw.js');
 
 self.analytics.trackingId = 'UA-77119321-2';
 
+function listNotifications(){
+  
+  const notifications = await self.registration.getNotifications();
+  let currentNotification;
+  console.log(notifications)
+  for(let i = 0; i < notifications.length; i++) {
+    currentNotification = notifications[i];
+    console.log(i)
+    console.log(currentNotification)    
+  }
+  return Promise.resolve()
+}
+
+
 self.addEventListener('push', async function (event) {
   console.log('Received push');
   var notificationTitle = 'Hello';
@@ -25,17 +39,9 @@ self.addEventListener('push', async function (event) {
     notificationTitle = 'Received Payload';
     notificationOptions.body = 'Push data: \'' + dataText + '\'';
   }
-  const notifications = await self.registration.getNotifications();
-  let currentNotification;
-  console.log(notifications)
-  for(let i = 0; i < notifications.length; i++) {
-    currentNotification = notifications[i];
-    console.log(i)
-    console.log(currentNotification)
-    
-  }
+  
  
-  event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions), self.analytics.trackEvent('push-received')]));
+  event.waitUntil(Promise.all([listNotifications(), self.registration.showNotification(notificationTitle, notificationOptions)]));
 });
 
 self.addEventListener('notificationclick', function (event) {
