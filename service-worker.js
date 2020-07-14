@@ -9,7 +9,7 @@ self.analytics.trackingId = 'UA-77119321-2';
 
 async function listNotifications(notificationTitle, notificationOptions ){
   
-   self.registration.showNotification(notificationTitle, notificationOptions).then(() => {
+   self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
         // Resolve promise AFTER the notification is displayed
         const notifications = await self.registration.getNotifications();
         let currentNotification;
