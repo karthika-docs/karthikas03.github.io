@@ -7,20 +7,24 @@ importScripts('./scripts/analytics-sw.js');
 
 self.analytics.trackingId = 'UA-77119321-2';
 
-async function listNotifications(){
+async function listNotifications(notificationTitle, notificationOptions ){
   
-  const notifications = await self.registration.getNotifications();
-  let currentNotification;
-  console.log(notifications)
-  for(let i = 0; i < notifications.length; i++) {
-    currentNotification = notifications[i];
-    console.log(i)
-    console.log(currentNotification) 
-    // Remember to close the old notification.
-    currentNotification.close();
-  }
-  
-  return Promise.resolve()
+   self.registration.showNotification(notificationTitle, notificationOptions).then(() => {
+        // Resolve promise AFTER the notification is displayed
+        const notifications = await self.registration.getNotifications();
+        let currentNotification;
+        console.log(notifications)
+        for(let i = 0; i < notifications.length; i++) {
+          currentNotification = notifications[i];
+          console.log(i)
+          console.log(currentNotification) 
+          // Remember to close the old notification.
+          currentNotification.close();
+        }
+        return Promise.resolve();
+    });
+     
+//   return Promise.resolve()
 }
 
 
@@ -44,7 +48,7 @@ self.addEventListener('push', async function (event) {
   }
   
  
-  event.waitUntil(Promise.all([ self.registration.showNotification(notificationTitle, notificationOptions), listNotifications()]));
+  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
 });
 
 self.addEventListener('notificationclick', function (event) {
