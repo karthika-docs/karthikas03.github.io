@@ -51,17 +51,17 @@ self.addEventListener('push', async function (event) {
   event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
 });
 
-self.addEventListener('notificationclick', function (event) {
-  event.notification.close();
+// self.addEventListener('notificationclick', function (event) {
+//   event.notification.close();
 
-  var clickResponsePromise = Promise.resolve();
-  if (event.notification.data && event.notification.data.url) {
-    clickResponsePromise = clients.openWindow(event.notification.data.url);
-  }
+//   var clickResponsePromise = Promise.resolve();
+//   if (event.notification.data && event.notification.data.url) {
+//     clickResponsePromise = clients.openWindow(event.notification.data.url);
+//   }
 
-  event.waitUntil(Promise.all([clickResponsePromise, self.analytics.trackEvent('notification-click')]));
-});
+//   event.waitUntil(Promise.all([clickResponsePromise, self.analytics.trackEvent('notification-click')]));
+// });
 
-self.addEventListener('notificationclose', function (event) {
-  event.waitUntil(Promise.all([self.analytics.trackEvent('notification-close')]));
-});
+// self.addEventListener('notificationclose', function (event) {
+//   event.waitUntil(Promise.all([self.analytics.trackEvent('notification-close')]));
+// });
