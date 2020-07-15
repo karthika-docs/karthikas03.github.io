@@ -188,35 +188,35 @@ var PushClient = function () {
       // we process permissions
       // window.PushDemo.ui.setPushSwitchDisabled(true);
 
-      this._stateChangeCb(this._state.STARTING_UNSUBSCRIBE);
+//       this._stateChangeCb(this._state.STARTING_UNSUBSCRIBE);
 
-      navigator.serviceWorker.ready.then(function (serviceWorkerRegistration) {
-        return serviceWorkerRegistration.pushManager.getSubscription();
-      }).then(function (pushSubscription) {
-        // Check we have everything we need to unsubscribe
-        if (!pushSubscription) {
-          _this4._stateChangeCb(_this4._state.UNSUBSCRIBED);
-          _this4._subscriptionUpdate(null);
-          return;
-        }
+//       navigator.serviceWorker.ready.then(function (serviceWorkerRegistration) {
+//         return serviceWorkerRegistration.pushManager.getSubscription();
+//       }).then(function (pushSubscription) {
+//         // Check we have everything we need to unsubscribe
+//         if (!pushSubscription) {
+//           _this4._stateChangeCb(_this4._state.UNSUBSCRIBED);
+//           _this4._subscriptionUpdate(null);
+//           return;
+//         }
 
-        // You should remove the device details from the server
-        // i.e. the  pushSubscription.endpoint
-        return pushSubscription.unsubscribe().then(function (successful) {
-          if (!successful) {
-            // The unsubscribe was unsuccessful, but we can
-            // remove the subscriptionId from our server
-            // and notifications will stop
-            // This just may be in a bad state when the user returns
-            console.error('We were unable to unregister from push');
-          }
-        });
-      }).then(function () {
-        _this4._stateChangeCb(_this4._state.UNSUBSCRIBED);
-        _this4._subscriptionUpdate(null);
-      }).catch(function (err) {
-        console.error('Error thrown while revoking push notifications. ' + 'Most likely because push was never registered', err);
-      });
+//         // You should remove the device details from the server
+//         // i.e. the  pushSubscription.endpoint
+//         return pushSubscription.unsubscribe().then(function (successful) {
+//           if (!successful) {
+//             // The unsubscribe was unsuccessful, but we can
+//             // remove the subscriptionId from our server
+//             // and notifications will stop
+//             // This just may be in a bad state when the user returns
+//             console.error('We were unable to unregister from push');
+//           }
+//         });
+//       }).then(function () {
+//         _this4._stateChangeCb(_this4._state.UNSUBSCRIBED);
+//         _this4._subscriptionUpdate(null);
+//       }).catch(function (err) {
+//         console.error('Error thrown while revoking push notifications. ' + 'Most likely because push was never registered', err);
+//       });
     }
   }]);
 
