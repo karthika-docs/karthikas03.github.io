@@ -26,7 +26,7 @@ var PushClient = function () {
       INITIALISING: {
         id: 'INITIALISING',
         interactive: true,
-        pushEnabled: true
+        pushEnabled: false
       },
       PERMISSION_DENIED: {
         id: 'PERMISSION_DENIED',
@@ -40,7 +40,7 @@ var PushClient = function () {
       PERMISSION_PROMPT: {
         id: 'PERMISSION_PROMPT',
         interactive: true,
-        pushEnabled: true
+        pushEnabled: false
       },
       ERROR: {
         id: 'ERROR',
