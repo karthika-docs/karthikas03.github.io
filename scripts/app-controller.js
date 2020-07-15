@@ -70,7 +70,7 @@ var AppController = function () {
         if (event.target.checked) {
           _this2._pushClient.subscribeDevice();
         } else {
-          _this2._pushClient.unsubscribeDevice();
+//           _this2._pushClient.unsubscribeDevice();
         }
       });
 
