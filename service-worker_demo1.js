@@ -27,6 +27,10 @@ async function listNotifications(notificationTitle, notificationOptions ){
 //   return Promise.resolve()
 }
 
+self.addEventListener('install', function(event) {
+  // The promise that skipWaiting() returns can be safely ignored.
+  self.skipWaiting();
+});
 
 self.addEventListener('push', async function (event) {
   console.log('Received push');
