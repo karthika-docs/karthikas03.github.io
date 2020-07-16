@@ -116,7 +116,7 @@ var AppController = function () {
         if (state.pushEnabled) {
           this._toggleSwitch.on();
         } else {
-          this._toggleSwitch.on();
+          this._toggleSwitch.off();
         }
       }
 
