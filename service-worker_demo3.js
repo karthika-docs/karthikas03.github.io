@@ -36,6 +36,10 @@ self.addEventListener('install', function(event) {
   // of event.waitUntil();
 });
 
+self.addEventListener('activate', event => {
+  event.waitUntil(clients.claim());
+});
+
 self.addEventListener('push', async function (event) {
   console.log('Received push');
   var notificationTitle = 'Hello';
