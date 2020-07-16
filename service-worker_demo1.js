@@ -48,7 +48,7 @@ self.addEventListener('push', async function (event) {
   }
   
  
-  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
+  event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions)]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
