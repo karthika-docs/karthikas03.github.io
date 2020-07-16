@@ -93,7 +93,12 @@ var AppController = function () {
 
       // Check that service workers are supported
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker_demo3.js').catch(function (err) {
+        navigator.serviceWorker.register('./service-worker_demo3.js').then(function(registration) {
+          // registration worked
+          console.log('Registration succeeded.');         
+           registration.update();
+          console.log('Registration Updated.'); 
+    }).catch(function (err) {
           _this3.showErrorMessage('Unable to Register SW', 'Sorry this demo requires a service worker to work and it ' + 'failed to install - sorry :(');
           console.error(err);
         });
