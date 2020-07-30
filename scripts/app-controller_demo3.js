@@ -99,10 +99,16 @@ var AppController = function () {
           // registration worked
           console.log('Registration succeeded.');         
           console.log('Registration succeeded. Scope is ' + registration.scope);
+          registration.addEventListener('updatefound', () => {
+              // A wild service worker has appeared in reg.installing!
+              const newWorker = reg.installing;
+              registration.update()
+           });
+          
           setInterval(() => {
             registration.update()
           }, 10000);
-
+        
         
 
     }).catch(function (err) {
