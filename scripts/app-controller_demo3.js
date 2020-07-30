@@ -98,7 +98,7 @@ var AppController = function () {
         navigator.serviceWorker.register('./service-worker_demo3.js').then(function(registration) {
           // registration worked
           console.log('Registration succeeded.');         
-          console.log('Registration succeeded. Scope is ' + reg.scope);
+          console.log('Registration succeeded. Scope is ' + registration.scope);
 //            registration.update();
 //           console.log('Registration Updated.'); 
     }).catch(function (err) {
