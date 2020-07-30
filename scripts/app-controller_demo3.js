@@ -101,7 +101,7 @@ var AppController = function () {
           console.log('Registration succeeded. Scope is ' + registration.scope);
           setInterval(() => {
             registration.update()
-          }, 20000);
+          }, 10000);
 
         
 
