@@ -99,7 +99,7 @@ var AppController = function () {
           // registration worked
           console.log('Registration succeeded.');         
           console.log('Registration succeeded. Scope is ' + registration.scope);
-          setTimeout(() => {
+          setInterval(() => {
             registration.update()
           }, 20000);
 
