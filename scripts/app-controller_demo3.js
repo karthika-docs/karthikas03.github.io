@@ -96,8 +96,8 @@ var AppController = function () {
         navigator.serviceWorker.register('./service-worker_demo3.js').then(function(registration) {
           // registration worked
           console.log('Registration succeeded.');         
-           registration.update();
-          console.log('Registration Updated.'); 
+//            registration.update();
+//           console.log('Registration Updated.'); 
     }).catch(function (err) {
           _this3.showErrorMessage('Unable to Register SW', 'Sorry this demo requires a service worker to work and it ' + 'failed to install - sorry :(');
           console.error(err);
@@ -121,7 +121,7 @@ var AppController = function () {
         if (state.pushEnabled) {
           this._toggleSwitch.on();
         } else {
-          this._toggleSwitch.on();
+          this._toggleSwitch.off();
         }
       }
 
