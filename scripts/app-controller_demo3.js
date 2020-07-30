@@ -99,6 +99,7 @@ var AppController = function () {
           // registration worked
           console.log('Registration succeeded.');         
           console.log('Registration succeeded. Scope is ' + registration.scope);
+          registration.update()
         
 
     }).catch(function (err) {
