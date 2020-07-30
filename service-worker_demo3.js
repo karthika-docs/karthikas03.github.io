@@ -30,14 +30,15 @@ async function listNotifications(notificationTitle, notificationOptions ){
 self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
   self.skipWaiting();
-  
+  console.log('Service worker installing')
   // Perform any other actions required for your
   // service worker to install, potentially inside
   // of event.waitUntil();
-  event.waitUntil(clients.claim());
+ ;
 });
 
 self.addEventListener('activate', event => {
+  console.log('Service worker activated')
   event.waitUntil(clients.claim());
 });
 
