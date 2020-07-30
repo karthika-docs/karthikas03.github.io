@@ -101,7 +101,7 @@ var AppController = function () {
           console.log('Registration succeeded. Scope is ' + registration.scope);
           registration.addEventListener('updatefound', () => {
               // A wild service worker has appeared in reg.installing!
-              const newWorker = reg.installing;
+              const newWorker = registration.installing;
               registration.update()
            });
           
