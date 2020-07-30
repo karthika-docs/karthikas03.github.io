@@ -35,7 +35,7 @@ self.addEventListener('install', function(event) {
   // service worker to install, potentially inside
   // of event.waitUntil();
  ;
-  self.registration.update();
+//   self.registration.update();
 });
 
 self.addEventListener('activate', event => {
