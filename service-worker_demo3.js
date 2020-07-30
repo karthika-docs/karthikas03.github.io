@@ -39,7 +39,7 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('activate', event => {
   console.log('Service worker activated')
-//   event.waitUntil(clients.claim());
+  event.waitUntil(clients.claim());
    self.registration.update();
           console.log('Registration Updated.'); 
   
