@@ -40,6 +40,12 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', event => {
   console.log('Service worker activated')
   event.waitUntil(clients.claim());
+    self.registration.unregister().then(function(boolean) {
+      // if boolean = true, unregister is successful
+          console.log('Registration unregistered.'); 
+          self.registration.update();
+          console.log('Registration Updated.'); 
+    });
 });
 
 self.addEventListener('push', async function (event) {
