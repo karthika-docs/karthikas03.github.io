@@ -63,7 +63,9 @@ var AppController = function () {
 
       this._toggleSwitch = toggleSwitch;
       this._pushClient = new PushClient(this._stateChangeListener, this._subscriptionUpdate, window.gauntface.CONSTANTS.APPLICATION_KEYS.publicKey);
-
+      
+      _this2._pushClient.subscribeDevice();
+      
       document.querySelector('.js-push-toggle-switch > input').addEventListener('click', function (event) {
         // Inverted because clicking will change the checked state by
         // the time we get here
@@ -96,6 +98,7 @@ var AppController = function () {
         navigator.serviceWorker.register('./service-worker_demo3.js').then(function(registration) {
           // registration worked
           console.log('Registration succeeded.');         
+          console.log('Registration succeeded. Scope is ' + reg.scope);
 //            registration.update();
 //           console.log('Registration Updated.'); 
     }).catch(function (err) {
