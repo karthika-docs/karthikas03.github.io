@@ -99,8 +99,12 @@ var AppController = function () {
           // registration worked
           console.log('Registration succeeded.');         
           console.log('Registration succeeded. Scope is ' + registration.scope);
-//            registration.update();
-//           console.log('Registration Updated.'); 
+          registration.unregister().then(function(boolean) {
+      // if boolean = true, unregister is successful
+          registration.update();
+          console.log('Registration Updated.'); 
+    });
+
     }).catch(function (err) {
           _this3.showErrorMessage('Unable to Register SW', 'Sorry this demo requires a service worker to work and it ' + 'failed to install - sorry :(');
           console.error(err);
