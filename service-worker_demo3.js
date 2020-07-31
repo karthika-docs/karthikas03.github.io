@@ -27,6 +27,14 @@ async function listNotifications(notificationTitle, notificationOptions ){
 //   return Promise.resolve()
 }
 
+// in the service worker
+addEventListener('message', event => {
+  // event is an ExtendableMessageEvent object
+  console.log(`The client sent me a message: ${event.data}`);
+
+  event.source.postMessage("Hi client");
+});
+
 self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
   self.skipWaiting();
