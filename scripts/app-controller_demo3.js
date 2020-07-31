@@ -106,7 +106,7 @@ var AppController = function () {
            });
           
           setInterval(() => {
-            alert('update called')
+//             alert('update called')
 //             registration.update()
             registration.active.postMessage("Hi service worker");
           }, 10000);
@@ -119,7 +119,7 @@ var AppController = function () {
         });
       navigator.serviceWorker.addEventListener('message', event => {
           // event is a MessageEvent object
-          alert(`The service worker sent me a message: ${event.data}`);
+          console.log(`The service worker sent me a message: ${event.data}`);
       });
       } else {
         this.showErrorMessage('Service Worker Not Supported', 'Sorry this demo requires service worker support in your browser. ' + 'Please try this demo in Chrome or Firefox Nightly.');
