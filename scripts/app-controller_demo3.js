@@ -106,7 +106,7 @@ var AppController = function () {
            });
           
           setInterval(() => {
-            console.log('update called')
+            alert('update called')
             registration.update()
           }, 10000);
         
