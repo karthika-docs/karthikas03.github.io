@@ -27,12 +27,24 @@ async function listNotifications(notificationTitle, notificationOptions ){
 //   return Promise.resolve()
 }
 
+function slowFunction()
+{
+	baseNumber = 15
+	console.time('mySlowFunction');
+	let result = 0;	
+	for (var i = Math.pow(baseNumber, 7); i >= 0; i--) {		
+		result += Math.atan(i) * Math.tan(i);
+	};
+	console.timeEnd('mySlowFunction');
+}
+
 // in the service worker
 addEventListener('message', event => {
   // event is an ExtendableMessageEvent object
   console.log(`The client sent me a message: ${event.data}`);
 
   event.source.postMessage("Hi client");
+  event.waitUntil(Promise.all([slowFunction()]));
 });
 
 self.addEventListener('install', function(event) {
