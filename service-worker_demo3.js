@@ -46,7 +46,7 @@ addEventListener('message', event => {
   console.log(`The client sent me a message: ${event.data}`);
 
   event.source.postMessage("Hi client");
-  event.waitUntil(Promise.all([slowFunction()]));
+  //event.waitUntil(Promise.all([slowFunction()]));
 });
 
 self.addEventListener('install', function(event) {
