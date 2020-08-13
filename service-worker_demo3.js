@@ -29,7 +29,7 @@ async function listNotifications(notificationTitle, notificationOptions ){
 
 function slowFunction()
 {
-	var baseNumber = 50
+	var baseNumber = 20
 	console.log('computation started')
 	console.time('mySlowFunction');
 	let result = 0;	
