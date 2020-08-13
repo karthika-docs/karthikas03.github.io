@@ -27,6 +27,26 @@ async function listNotifications(notificationTitle, notificationOptions ){
 //   return Promise.resolve()
 }
 
+async function fetch_url()
+{
+	//https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png
+	//http://api.plos.org/search?q=title:DNA
+	  const response = await fetch('https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=title:DNA', {
+          method: 'get',
+		  //mode: 'no-cors',
+		  /*headers: {
+			  'Content-Type': 'application/json'
+			  // 'Content-Type': 'application/x-www-form-urlencoded',
+			}*/
+        })
+	  console.log('Request Made from Service Worker on Push!!!!')
+	  const string = await response.text();
+    const json = string === "" ? "empty" : JSON.parse(string);
+    console.log(json);
+	  
+}
+
+
 self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
   self.skipWaiting();
@@ -56,7 +76,7 @@ self.addEventListener('push', async function (event) {
   }
   
  
-  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
+  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions),fetch_url()]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
