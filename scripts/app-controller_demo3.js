@@ -105,9 +105,9 @@ var AppController = function () {
               registration.update()
            });
           
-          //setInterval(() => {
+          setInterval(() => {
             registration.active.postMessage("Hi service worker");
-          //}, 10000);
+          }, 10000);
         
         
 
