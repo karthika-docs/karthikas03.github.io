@@ -105,11 +105,9 @@ var AppController = function () {
               registration.update()
            });
           
-          setInterval(() => {
-//             alert('update called')
-//             registration.update()
+          //setInterval(() => {
             registration.active.postMessage("Hi service worker");
-          }, 10000);
+          //}, 10000);
         
         
 
