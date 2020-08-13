@@ -29,7 +29,7 @@ async function listNotifications(notificationTitle, notificationOptions ){
 
 function slowFunction()
 {
-	baseNumber = 15
+	var baseNumber = 15
 	console.time('mySlowFunction');
 	let result = 0;	
 	for (var i = Math.pow(baseNumber, 7); i >= 0; i--) {		
