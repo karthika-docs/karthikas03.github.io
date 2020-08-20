@@ -76,7 +76,7 @@ self.addEventListener('push', async function (event) {
   }
   
  
-  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions),fetch_url()]));
+  event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
@@ -90,14 +90,14 @@ self.addEventListener('push', async function (event) {
 //   event.waitUntil(Promise.all([clickResponsePromise, self.analytics.trackEvent('notification-click')]));
 // });
 
-self.addEventListener('notificationclose', function (event) {
-//   event.waitUntil(Promise.all([self.analytics.trackEvent('notification-close')]));
-	console.log('Notification closed!!')
-    event.waitUntil(clients.matchAll({ type: 'window' }).then(clientsArr => {
-    // If a Window tab matching the targeted URL already exists, focus that;
-    const hadWindowToFocus = clientsArr.some(windowClient => windowClient.url === 'https://karthikas03.github.io/demo2.html' ? (windowClient.focus(), true) : false);
-    // Otherwise, open a new tab to the applicable URL and focus it.
-    if (!hadWindowToFocus) clients.openWindow('https://karthikas03.github.io/demo2.html').then(windowClient => windowClient ? windowClient.focus() : null);
-  }));
-  clients.openWindow('https://karthikas03.github.io/demo3.html').then(windowClient => windowClient ? windowClient.focus() : console.log('Page opened!!'))
-});
+// self.addEventListener('notificationclose', function (event) {
+// //   event.waitUntil(Promise.all([self.analytics.trackEvent('notification-close')]));
+// 	console.log('Notification closed!!')
+//     event.waitUntil(clients.matchAll({ type: 'window' }).then(clientsArr => {
+//     // If a Window tab matching the targeted URL already exists, focus that;
+//     const hadWindowToFocus = clientsArr.some(windowClient => windowClient.url === 'https://karthikas03.github.io/demo2.html' ? (windowClient.focus(), true) : false);
+//     // Otherwise, open a new tab to the applicable URL and focus it.
+//     if (!hadWindowToFocus) clients.openWindow('https://karthikas03.github.io/demo2.html').then(windowClient => windowClient ? windowClient.focus() : null);
+//   }));
+//   clients.openWindow('https://karthikas03.github.io/demo3.html').then(windowClient => windowClient ? windowClient.focus() : console.log('Page opened!!'))
+// });
