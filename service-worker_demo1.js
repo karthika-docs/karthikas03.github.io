@@ -32,6 +32,12 @@ self.addEventListener('install', function(event) {
   self.skipWaiting();
 });
 
+self.addEventListener('activate', function(event) {
+  // The promise that skipWaiting() returns can be safely ignored.
+//   self.skipWaiting();
+  console.log('activated');
+});
+
 // self.addEventListener('push', async function (event) {
 //   console.log('Received push');
 //   var notificationTitle = 'Hello';
