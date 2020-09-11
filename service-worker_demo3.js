@@ -27,6 +27,27 @@ async function listNotifications(notificationTitle, notificationOptions ){
 //   return Promise.resolve()
 }
 
+async function fetch_url()
+{
+	//https://cors-anywhere.herokuapp.com/
+	//https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png
+	//http://api.plos.org/search?q=title:DNA
+	//https://www.googleapis.com/discovery/v1/apis?fields=
+	  const response = await fetch('https://cors-anywhere.herokuapp.com/https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png', {
+          method: 'get',
+		  mode: 'cors',
+		  /*headers: {
+			  'Content-Type': 'application/json'
+			  // 'Content-Type': 'application/x-www-form-urlencoded',
+			}*/
+        })
+	
+	  const string = await response.text();
+      const json = string === "" ? "empty" : JSON.parse(string);
+      console.log(json);
+	  
+}
+
 function slowFunction()
 {
 	var baseNumber = 15
@@ -93,7 +114,7 @@ self.addEventListener('push', async function (event) {
   }
   
  
-  event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions)]));
+  event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions), fetch_url()]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
