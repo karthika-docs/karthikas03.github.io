@@ -24,7 +24,7 @@ async function fetchAndModify(request) {
 
   // Read response body.
   const text = await response.text();
-
+  console.log(text);
   // Modify it.
   const modified = text.replace("<body", '<body style="direction:rtl"');
 
