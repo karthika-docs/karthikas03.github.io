@@ -28,12 +28,12 @@ async function fetchAndModify(request) {
   // Modify it.
 //   const modified = text.replace("<body", '<body style="direction:rtl"');
 
-//   // Return modified response.
-//   return new Response(modified, {
-//     status: response.status,
-//     statusText: response.statusText,
-//     headers: response.headers
-//   });
+  // Return modified response.
+  return new Response(text, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: response.headers
+  });
   return response;
 }
 
