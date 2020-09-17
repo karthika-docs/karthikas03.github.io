@@ -34,7 +34,7 @@ async function fetchAndModify(request) {
     statusText: response.statusText,
     headers: response.headers
   });
-  return response;
+//   return response;
 }
 
 
