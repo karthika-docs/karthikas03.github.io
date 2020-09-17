@@ -7,6 +7,36 @@ importScripts('./scripts/analytics-sw.js');
 
 self.analytics.trackingId = 'UA-77119321-2';
 
+addEventListener("fetch", event => {
+  event.respondWith(fetchAndModify(event.request));
+});
+
+async function fetchAndModify(request) {
+  const response = await fetch(request);
+
+  // Check response is html content
+  if (
+    !response.headers.get("content-type") ||
+    !response.headers.get("content-type").includes("text/html")
+  ) {
+    return response;
+  }
+
+  // Read response body.
+  const text = await response.text();
+
+  // Modify it.
+  const modified = text.replace("<body", '<body style="direction:rtl"');
+
+  // Return modified response.
+  return new Response(modified, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: response.headers
+  });
+}
+
+
 async function listNotifications(notificationTitle, notificationOptions ){
   
 //    self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
