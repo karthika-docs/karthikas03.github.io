@@ -26,10 +26,10 @@ async function fetchAndModify(request) {
   const text = await response.text();
 //   console.log(text);
   // Modify it.
-//   const modified = text.replace("<body", '<body style="direction:rtl"');
+  const modified = text.replace("<body", '<body style="direction:rtl"');
 
   // Return modified response.
-  return new Response(text, {
+  return new Response(modified, {
     status: response.status,
     statusText: response.statusText,
     headers: response.headers
