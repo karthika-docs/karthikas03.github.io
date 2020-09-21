@@ -22,19 +22,19 @@ async function fetchAndModify(request) {
     return response;
   }
 
-  // Read response body.
-  const text = await response.text();
-//   console.log(text);
-  // Modify it.
-  const modified = text.replace("<body", '<body style="direction:rtl"');
+//   // Read response body.
+//   const text = await response.text();
+// //   console.log(text);
+//   // Modify it.
+//   const modified = text.replace("<body", '<body style="direction:rtl"');
 
-  // Return modified response.
-  return new Response(modified, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: response.headers
-  });
-//   return response;
+//   // Return modified response.
+//   return new Response(modified, {
+//     status: response.status,
+//     statusText: response.statusText,
+//     headers: response.headers
+//   });
+  return response;
 }
 
 
