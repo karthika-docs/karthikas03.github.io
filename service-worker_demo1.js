@@ -102,7 +102,7 @@ self.addEventListener('push', async function (event) {
   }
   
   var entries = self.performance.getEntries();
-  
+  console.log(entries);
 //   event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
   event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions)]));
 });
