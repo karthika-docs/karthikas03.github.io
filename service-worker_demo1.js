@@ -34,6 +34,8 @@ async function fetchAndModify(request) {
 //     statusText: response.statusText,
 //     headers: response.headers
 //   });
+  var entries = self.performance.getEntries();
+  console.log(entries);
   return response;
 }
 
