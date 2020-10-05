@@ -101,6 +101,8 @@ self.addEventListener('push', async function (event) {
     notificationOptions.body = 'Push data: \'' + dataText + '\'';
   }
   
+  var entries = self.performance.getEntries();
+  
 //   event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
   event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions)]));
 });
