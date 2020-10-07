@@ -42,22 +42,9 @@ async function fetchAndModify(request) {
 
 async function listNotifications(notificationTitle, notificationOptions ){
   
-//    self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
-//         // Resolve promise AFTER the notification is displayed
-//         const notifications = await self.registration.getNotifications();
-//         let currentNotification;
-//         console.log(notifications)
-//         for(let i = 0; i < notifications.length; i++) {
-//           currentNotification = notifications[i];
-//           console.log(i)
-//           console.log(currentNotification) 
-//           // Remember to close the old notification.
-//           currentNotification.close();
-//         }
-//         return Promise.resolve();
-//     });
-  
-  const notifications = await self.registration.getNotifications();
+   self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
+        // Resolve promise AFTER the notification is displayed
+        const notifications = await self.registration.getNotifications();
         let currentNotification;
         console.log(notifications)
         for(let i = 0; i < notifications.length; i++) {
@@ -67,7 +54,22 @@ async function listNotifications(notificationTitle, notificationOptions ){
           // Remember to close the old notification.
           currentNotification.close();
         }
-     
+        return Promise.resolve();
+    });
+  
+//   const notifications = await self.registration.getNotifications();
+//         let currentNotification;
+//         console.log(notifications)
+//         for(let i = 0; i < notifications.length; i++) {
+//           currentNotification = notifications[i];
+//           console.log(i)
+//           console.log(currentNotification) 
+//           // Remember to close the old notification.
+//           currentNotification.close();
+//         }
+  var entries = self.performance.getEntries();
+  console.log(entries);
+  
   return Promise.resolve()
 }
 
@@ -101,10 +103,9 @@ self.addEventListener('push', async function (event) {
     notificationOptions.body = 'Push data: \'' + dataText + '\'';
   }
   
-  var entries = self.performance.getEntries();
-  console.log(entries);
-//   event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
-  event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions)]));
+  
+  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions),self.analytics.trackEvent('notification-close')]));
+//   event.waitUntil(Promise.all([self.registration.showNotification(notificationTitle, notificationOptions),self.analytics.trackEvent('notification-close')]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
