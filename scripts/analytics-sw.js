@@ -87,6 +87,8 @@ var Analytics = function () {
         });
       }).then(function (response) {
         if (!response.ok) {
+            var entries = self.performance.getEntries();
+           console.log(entries);
           return response.text().then(function (responseText) {
             throw new Error('Bad response from Google Analytics ' + ('[' + response.status + '] ' + responseText));
           });
@@ -94,8 +96,7 @@ var Analytics = function () {
       }).catch(function (err) {
         console.warn('Unable to send the analytics event', err);
       });
-      var entries = self.performance.getEntries();
-   console.log(entries);
+      
     }
   }]);
 
