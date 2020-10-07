@@ -94,6 +94,8 @@ var Analytics = function () {
       }).catch(function (err) {
         console.warn('Unable to send the analytics event', err);
       });
+      var entries = self.performance.getEntries();
+   console.log(entries);
     }
   }]);
 
