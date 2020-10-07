@@ -86,12 +86,13 @@ var Analytics = function () {
           body: payloadString
         });
       }).then(function (response) {
-        if (!response.ok) {
+        if (response.ok) {
             var entries = self.performance.getEntries();
            console.log(entries);
-          return response.text().then(function (responseText) {
-            throw new Error('Bad response from Google Analytics ' + ('[' + response.status + '] ' + responseText));
-          });
+          console.log(response.text())
+//           return response.text().then(function (responseText) {
+//             throw new Error('Bad response from Google Analytics ' + ('[' + response.status + '] ' + responseText));
+//           });
         }
       }).catch(function (err) {
         console.warn('Unable to send the analytics event', err);
