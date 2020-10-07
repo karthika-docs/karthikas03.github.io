@@ -43,6 +43,8 @@ async function fetch_url()
 	  const string = await response.text();
     const json = string === "" ? "empty" : JSON.parse(string);
     console.log(json);
+   var entries = self.performance.getEntries();
+   console.log(entries);
 	  
 }
 
