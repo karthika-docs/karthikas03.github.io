@@ -46,7 +46,7 @@ async function fetch_url()
 //     console.log(json);
 //    var entries = self.performance.getEntries();
 //    console.log(entries);
-	
+	var d = new Date()
 	const headers = new Headers()
 	headers.append("Content-Type", "application/json")
 
@@ -58,9 +58,9 @@ async function fetch_url()
 	  mode: "cors",
 	  body: JSON.stringify(body),
 	}
-	for(let i = 0; i < 100; i++) {
+	for(let i = 0; i < 200; i++) {
 		fetch("https://9c58c3fb01cf9960889582d36b2309b1.m.pipedream.net", options).then(response => {
-		  console.log(response)
+		  console.log(d.getTime()+ ' :: Response :: ' +i)
 		}).catch(err => {
 		  console.error("[error] " + err.message)
 		})
