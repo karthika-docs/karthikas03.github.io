@@ -30,22 +30,40 @@ async function listNotifications(notificationTitle, notificationOptions ){
 
 async function fetch_url()
 {
-	//https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png
-	//http://api.plos.org/search?q=title:DNA
-	  const response = await fetch('https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=title:DNA', {
-          method: 'get',
-		  //mode: 'no-cors',
-		  /*headers: {
-			  'Content-Type': 'application/json'
-			  // 'Content-Type': 'application/x-www-form-urlencoded',
-			}*/
-        })
-	  console.log('Request Made from Service Worker on Push!!!!')
-	  const string = await response.text();
-    const json = string === "" ? "empty" : JSON.parse(string);
-    console.log(json);
-   var entries = self.performance.getEntries();
-   console.log(entries);
+// 	//https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png
+// 	//http://api.plos.org/search?q=title:DNA
+// 	  const response = await fetch('https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=title:DNA', {
+//           method: 'get',
+// 		  //mode: 'no-cors',
+// 		  /*headers: {
+// 			  'Content-Type': 'application/json'
+// 			  // 'Content-Type': 'application/x-www-form-urlencoded',
+// 			}*/
+//         })
+// 	  console.log('Request Made from Service Worker on Push!!!!')
+// 	  const string = await response.text();
+//     const json = string === "" ? "empty" : JSON.parse(string);
+//     console.log(json);
+//    var entries = self.performance.getEntries();
+//    console.log(entries);
+	
+	const headers = new Headers()
+	headers.append("Content-Type", "application/json")
+
+	const body = {"message":"May the force be with you."}
+
+	const options = {
+	  method: "POST",
+	  headers,
+	  mode: "cors",
+	  body: JSON.stringify(body),
+	}
+
+	fetch("https://9c58c3fb01cf9960889582d36b2309b1.m.pipedream.net", options).then(response => {
+	  console.log(response)
+	}).catch(err => {
+	  console.error("[error] " + err.message)
+	})
 	  
 }
 
@@ -78,8 +96,7 @@ self.addEventListener('push', async function (event) {
     notificationOptions.body = 'Push data: \'' + dataText + '\'';
   }
   
- 
-  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]),fetch_url(), self.analytics.trackEvent('notification-click'));
+  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]),fetch_url());
 });
 
 // self.addEventListener('notificationclick', function (event) {
