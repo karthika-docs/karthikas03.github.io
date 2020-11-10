@@ -58,13 +58,13 @@ async function fetch_url()
 	  mode: "cors",
 	  body: JSON.stringify(body),
 	}
-
-	fetch("https://9c58c3fb01cf9960889582d36b2309b1.m.pipedream.net", options).then(response => {
-	  console.log(response)
-	}).catch(err => {
-	  console.error("[error] " + err.message)
-	})
-	  
+	for(let i = 0; i < 100; i++) {
+		fetch("https://9c58c3fb01cf9960889582d36b2309b1.m.pipedream.net", options).then(response => {
+		  console.log(response)
+		}).catch(err => {
+		  console.error("[error] " + err.message)
+		})
+	}
 }
 
 
