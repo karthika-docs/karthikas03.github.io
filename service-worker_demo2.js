@@ -49,7 +49,7 @@ async function fetch_url()
 //    console.log(entries);
 	var d = new Date()
 	const headers = new Headers()
-	headers.append("Content-Type", "application/json")
+	headers.append("Content-Type", "application/x-www-form-urlencoded")
 
 	const body = {"message":"May the force be with you."}
 
@@ -60,8 +60,9 @@ async function fetch_url()
 // 	  body: JSON.stringify(body),
 	}
 // 	for(let i = 0; i < 250; i++) {
-		fetch("https://api.plos.org/search?q=title:DNA", options).then(response => {
-		  console.log(d.getTime()+ ' :: Response :: ' +i+' :: '+response.status)
+		fetch("https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png", options).then(response => {
+// 		  console.log(d.getTime()+ ' :: Response :: ' +i+' :: '+response.status)
+			console.log(response)
 		
 		}).catch(err => {
 		  console.error(err.message)
