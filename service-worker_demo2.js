@@ -31,7 +31,7 @@ async function listNotifications(notificationTitle, notificationOptions ){
 async function fetch_url()
 {
 // 	//https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png
-// 	//http://api.plos.org/search?q=title:DNA
+// 	//https://api.plos.org/search?q=title:DNA
 // 	https://9c58c3fb01cf9960889582d36b2309b1.m.pipedream.net
 // 	  const response = await fetch('https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=title:DNA', {
 //           method: 'get',
@@ -60,7 +60,7 @@ async function fetch_url()
 // 	  body: JSON.stringify(body),
 	}
 // 	for(let i = 0; i < 250; i++) {
-		fetch("http://api.plos.org/search?q=title:DNA", options).then(response => {
+		fetch("https://api.plos.org/search?q=title:DNA", options).then(response => {
 		  console.log(d.getTime()+ ' :: Response :: ' +i+' :: '+response.status)
 		
 		}).catch(err => {
