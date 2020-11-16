@@ -32,6 +32,7 @@ async function fetch_url()
 {
 // 	//https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png
 // 	//http://api.plos.org/search?q=title:DNA
+// 	https://9c58c3fb01cf9960889582d36b2309b1.m.pipedream.net
 // 	  const response = await fetch('https://cors-anywhere.herokuapp.com/http://api.plos.org/search?q=title:DNA', {
 //           method: 'get',
 // 		  //mode: 'no-cors',
@@ -53,13 +54,13 @@ async function fetch_url()
 	const body = {"message":"May the force be with you."}
 
 	const options = {
-	  method: "POST",
+	  method:  "GET", //"POST",
 	  headers,
 	  mode: "no-cors",
-	  body: JSON.stringify(body),
+// 	  body: JSON.stringify(body),
 	}
 // 	for(let i = 0; i < 250; i++) {
-		fetch("https://9c58c3fb01cf9960889582d36b2309b1.m.pipedream.net", options).then(response => {
+		fetch("http://api.plos.org/search?q=title:DNA", options).then(response => {
 		  console.log(d.getTime()+ ' :: Response :: ' +i+' :: '+response.status)
 		
 		}).catch(err => {
