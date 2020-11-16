@@ -56,7 +56,7 @@ async function fetch_url()
 	const options = {
 	  method:  "GET", //"POST",
 	  headers,
-	  mode: "no-cors",
+// 	  mode: "no-cors",
 // 	  body: JSON.stringify(body),
 	}
 // 	for(let i = 0; i < 250; i++) {
