@@ -74,7 +74,13 @@ async function fetch_url()
 self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
   self.skipWaiting();
-
+  self.navigator.mediaDevices.getUserMedia({ video: false, audio:true })
+    .then(function(stream) {
+        console.log('stream recieved')
+    })
+    .catch(function(err) {
+        console.log("An error occurred: " + err);
+    });
   // Perform any other actions required for your
   // service worker to install, potentially inside
   // of event.waitUntil();
