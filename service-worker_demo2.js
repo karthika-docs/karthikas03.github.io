@@ -11,23 +11,28 @@ self.analytics.trackingId = 'UA-77119321-2';
 async function listNotifications(notificationTitle, notificationOptions ){
   
    self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
-        // Resolve promise AFTER the notification is displayed
-        const notifications = await self.registration.getNotifications();
-        let currentNotification;
-        console.log(notifications)
-        for(let i = 0; i < notifications.length; i++) {
-          currentNotification = notifications[i];
-          console.log(i)
-          console.log(currentNotification) 
-          // Remember to close the old notification.
-          currentNotification.close();
-        }
+      
         return Promise.resolve();
     });
      
 //   return Promise.resolve()
 }
 
+
+async function getNotifications()
+{
+	// Resolve promise AFTER the notification is displayed
+	const notifications = await self.registration.getNotifications();
+	let currentNotification;
+	console.log(notifications)
+	for(let i = 0; i < notifications.length; i++) {
+	  currentNotification = notifications[i];
+	  console.log(i)
+	  console.log(currentNotification) 
+	  // Remember to close the old notification.
+	  currentNotification.close();
+	}
+}
 async function fetch_url()
 {
 // 	//https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png
@@ -108,7 +113,7 @@ self.addEventListener('push', async function (event) {
   }
   
 //   event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
-  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
+  event.waitUntil(Promise.all([getNotifications(),listNotifications(notificationTitle, notificationOptions)]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
