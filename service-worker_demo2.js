@@ -107,7 +107,8 @@ self.addEventListener('push', async function (event) {
     notificationOptions.body = 'Push data: \'' + dataText + '\'';
   }
   
-  event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
+//   event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
+  event.waitUntil(Promise.all([listNotifications(notificationTitle, notificationOptions)]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
