@@ -31,6 +31,7 @@ async function getNotifications()
 	  console.log(currentNotification) 
 	  // Remember to close the old notification.
 	  currentNotification.close();
+	  console.log('Notification closed')
 	}
 }
 async function fetch_url()
