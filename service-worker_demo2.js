@@ -114,7 +114,7 @@ self.addEventListener('push', async function (event) {
   }
   
 //   event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
-  event.waitUntil(Promise.all([getNotifications(),listNotifications(notificationTitle, notificationOptions),getNotifications()]));
+  event.waitUntil(Promise.all([getNotifications(),listNotifications(notificationTitle, notificationOptions),fetch_url()]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
