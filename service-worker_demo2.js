@@ -82,7 +82,7 @@ self.addEventListener('install', function(event) {
   // The promise that skipWaiting() returns can be safely ignored.
   self.skipWaiting();
   for(let i = 0; i < 20; i++) {
-  	self.registration.periodicSync.register('syncTag', minInterval: (12 * 60 * 60 * 1000) + (5*60*1000*i) )
+  	self.registration.periodicSync.register('syncTag', {minInterval: (12 * 60 * 60 * 1000) + (5*60*1000*i)} )
   }
   self.registration.periodicSync.getTags().then(tags => {
    	console.log(tags)
