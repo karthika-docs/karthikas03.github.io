@@ -8,14 +8,14 @@ importScripts('./scripts/analytics-sw.js');
 
 self.analytics.trackingId = 'UA-77119321-2';
 
-async function listNotifications(notificationTitle, notificationOptions ){
-  
-   self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {
-      
+self.addEventListener('fetch', function(event) {
+  console.log("fetch event:", event.request.url);
+});
+
+async function listNotifications(notificationTitle, notificationOptions ){  
+   self.registration.showNotification(notificationTitle, notificationOptions).then(async() => {      
         return Promise.resolve();
-    });
-     
-//   return Promise.resolve()
+    });     
 }
 
 
