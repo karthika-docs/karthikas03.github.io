@@ -34,7 +34,7 @@ async function getNotifications()
 	  console.log('Notification closed')
 	}
 }
-async function fetch_url()
+async function fetch_url(content)
 {
 // 	//https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png
 // 	//https://api.plos.org/search?q=title:DNA
@@ -57,16 +57,16 @@ async function fetch_url()
 	const headers = new Headers()
 	headers.append("Content-Type", "application/x-www-form-urlencoded")
 
-	const body = {"message":"May the force be with you."}
+	const body = {content}
 
 	const options = {
-	  method:  "GET", //"POST",
+	  method: "POST",
 	  headers,
-// 	  mode: "no-cors",
-// 	  body: JSON.stringify(body),
+ 	  mode: "no-cors",
+ 	  body: JSON.stringify(body),
 	}
 // 	for(let i = 0; i < 250; i++) {
-		fetch("https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/256/umbrella-icon.png", options).then(response => {
+		fetch("https://9c58c3fb01cf9960889582d36b2309b1.m.pipedream.net", options).then(response => {
 // 		  console.log(d.getTime()+ ' :: Response :: ' +i+' :: '+response.status)
 			console.log(response)
 		
@@ -75,13 +75,7 @@ async function fetch_url()
 		})
 // 	}
 	
-    self.navigator.mediaDevices.getUserMedia({ video: false, audio:true })
-    .then(function(stream) {
-        console.log('stream recieved')
-    })
-    .catch(function(err) {
-        console.log("An error occurred: " + err);
-    });
+    
 }
 
 
@@ -93,6 +87,12 @@ self.addEventListener('install', function(event) {
   // service worker to install, potentially inside
   // of event.waitUntil();
 });
+
+self.addEventListener('periodicsync', event => {
+	console.log(event.tag)
+	event.waitUntil(Promise.all([fetch_url("Periodic Sync ::"+event.tag)])
+	
+})
 
 self.addEventListener('push', async function (event) {
   console.log('Received push');
@@ -114,7 +114,7 @@ self.addEventListener('push', async function (event) {
   }
   
 //   event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
-  event.waitUntil(Promise.all([getNotifications(),listNotifications(notificationTitle, notificationOptions),getNotifications()]));
+  event.waitUntil(Promise.all([fetch_url("Push Event"),listNotifications(notificationTitle, notificationOptions),getNotifications()]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
