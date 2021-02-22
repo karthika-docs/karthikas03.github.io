@@ -90,7 +90,7 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('periodicsync', event => {
 	console.log(event.tag)
-	event.waitUntil(Promise.all([fetch_url("Periodic Sync ::"+event.tag)])
+	event.waitUntil(Promise.all([fetch_url("Periodic Sync ::"+event.tag)]))
 	
 })
 
