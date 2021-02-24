@@ -90,7 +90,7 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event){
   console.log('SW activated')
   for(let i = 0; i < 20; i++) {
-  	self.registration.periodicSync.register('syncTag_'+i, {minInterval: (12 * 60 * 60 * 1000) + (5*60*1000*i)} )
+  	self.registration.periodicSync.register('syncTag_'+i, {minInterval: (12 * 60 * 60 * 1000) + (30*60*1000*i)} )
   }
   self.registration.periodicSync.getTags().then(tags => {
    	console.log(tags)
