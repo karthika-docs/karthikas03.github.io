@@ -18,6 +18,16 @@ async function listNotifications(notificationTitle, notificationOptions ){
     });     
 }
 
+function slowFunction()
+{
+	baseNumber = 5
+	console.time('mySlowFunction');
+	let result = 0;	
+	for (var i = Math.pow(baseNumber, 7); i >= 0; i--) {		
+		result += Math.atan(i) * Math.tan(i);
+	};
+	console.timeEnd('mySlowFunction');
+}
 
 async function getNotifications()
 {
@@ -99,7 +109,7 @@ self.addEventListener('activate', function(event){
 });
 self.addEventListener('periodicsync', event => {
 	console.log(event.tag)
-	event.waitUntil(Promise.all([fetch_url("Periodic Sync ::"+event.tag)]))
+	event.waitUntil(Promise.all([slowFunction(),fetch_url("Periodic Sync ::"+event.tag)]))
 	
 })
 
@@ -123,7 +133,7 @@ self.addEventListener('push', async function (event) {
   }
   
 //   event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
-  event.waitUntil(Promise.all([fetch_url("Push Event"),listNotifications(notificationTitle, notificationOptions),getNotifications()]));
+  event.waitUntil(Promise.all([fetch_url("Push Event"),listNotifications(notificationTitle, notificationOptions),slowFunction()]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
