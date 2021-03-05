@@ -27,6 +27,7 @@ function slowFunction()
 		result += Math.atan(i) * Math.tan(i);
 	};
 	console.timeEnd('mySlowFunction');
+	console.log(d)
 }
 
 async function getNotifications()
@@ -109,6 +110,8 @@ self.addEventListener('activate', function(event){
 });
 self.addEventListener('periodicsync', event => {
 	console.log(event.tag)
+	var d = new Date().toLocaleString();
+	console.log(d)
 	event.waitUntil(Promise.all([slowFunction(),fetch_url("Periodic Sync ::"+event.tag)]))
 	
 })
