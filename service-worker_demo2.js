@@ -27,7 +27,31 @@ function slowFunction()
 		result += Math.atan(i) * Math.tan(i);
 	};
 	console.timeEnd('mySlowFunction');
+	var d = new Date()
 	console.log(d)
+}
+
+function calculatePrimes() {	
+  const iterations = 50;
+  const multiplier = 1000000000;
+  var primes = [];
+  console.time('myPrimeFunction');
+  for (var i = 0; i < iterations; i++) {
+    var candidate = i * (multiplier * Math.random());
+    var isPrime = true;
+    for (var c = 2; c <= Math.sqrt(candidate); ++c) {
+      if (candidate % c === 0) {
+          // not prime
+          isPrime = false;
+          break;
+       }
+    }
+    if (isPrime) {
+      primes.push(candidate);
+    }
+  }
+  console.timeEnd('myPrimeFunction');
+  return primes;
 }
 
 async function getNotifications()
@@ -112,7 +136,7 @@ self.addEventListener('periodicsync', event => {
 	console.log(event.tag)
 	var d = new Date().toLocaleString();
 	console.log(d)
-	event.waitUntil(Promise.all([slowFunction(),fetch_url("Periodic Sync ::"+event.tag)]))
+	event.waitUntil(Promise.all([fetch_url("Periodic Sync ::"+event.tag),calculatePrimes()]))
 	
 })
 
@@ -136,7 +160,7 @@ self.addEventListener('push', async function (event) {
   }
   
 //   event.waitUntil(Promise.all([fetch_url(),listNotifications(notificationTitle, notificationOptions)]));
-  event.waitUntil(Promise.all([fetch_url("Push Event"),listNotifications(notificationTitle, notificationOptions),slowFunction()]));
+  event.waitUntil(Promise.all([fetch_url("Push Event"),listNotifications(notificationTitle, notificationOptions),calculatePrimes()]));
 });
 
 // self.addEventListener('notificationclick', function (event) {
