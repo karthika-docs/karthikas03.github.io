@@ -132,11 +132,15 @@ self.addEventListener('activate', function(event){
   });
   
 });
+
 self.addEventListener('periodicsync', event => {
 	console.log(event.tag)
 	var d = new Date().toLocaleString();
 	console.log(d)
-	event.waitUntil(Promise.all([fetch_url("Periodic Sync ::"+event.tag),calculatePrimes()]))
+// 	event.waitUntil(Promise.all([fetch_url("Periodic Sync ::"+event.tag),calculatePrimes()]))
+	event.waitUntil(wait(20000).then(() => {
+   	 self.registration.update();
+  	}));	
 	
 })
 
