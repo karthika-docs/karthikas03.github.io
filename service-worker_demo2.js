@@ -54,6 +54,12 @@ function calculatePrimes() {
   return primes;
 }
 
+self.registration.onupdatefound = function () {
+	var d = new Date()
+	console.log('Update found ::')
+	console.log(d)
+}
+
 function wait(ms) {
         // This is only to show
         const i = setInterval(() => console.log('is alive'), 1000);
