@@ -54,6 +54,15 @@ function calculatePrimes() {
   return primes;
 }
 
+function wait(ms) {
+        // This is only to show
+        const i = setInterval(() => console.log('is alive'), 1000);
+        return new Promise(resolve => setTimeout(() => {
+          clearInterval(i);
+          resolve();
+        }, ms));
+}
+
 async function getNotifications()
 {
 	// Resolve promise AFTER the notification is displayed
