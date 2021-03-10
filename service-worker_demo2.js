@@ -56,6 +56,7 @@ function calculatePrimes() {
 
 self.registration.onupdatefound = function () {
 	var d = new Date()
+	console.log('yes.. its working')
 	console.log('Update found ::')
 	console.log(d)
 }
