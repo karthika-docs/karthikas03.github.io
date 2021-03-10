@@ -59,6 +59,8 @@ function wait(ms) {
         const i = setInterval(() => console.log('is alive'), 1000);
         return new Promise(resolve => setTimeout(() => {
           clearInterval(i);
+	  var d = new Date()
+	  console.log(d)
           resolve();
         }, ms));
 }
